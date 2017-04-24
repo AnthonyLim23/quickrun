@@ -14,101 +14,184 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>751</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Instrument:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox">
-       <item>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="lb_instrument">
         <property name="text">
-         <string>IRIS</string>
+         <string>Instrument:</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cb_instrument">
+        <item>
+         <property name="text">
+          <string>IRIS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OSIRIS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TOSCA</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VESUVIO</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lb_analyser">
         <property name="text">
-         <string>OSIRIS</string>
+         <string>Analyser:</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cb_analyser">
+        <item>
+         <property name="text">
+          <string>graphite</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>mica</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>fmica</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lb_reflection">
         <property name="text">
-         <string>TOSCA</string>
+         <string>Reflection:</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cb_reflection">
+        <item>
+         <property name="text">
+          <string>002</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>004</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="lb_input">
         <property name="text">
-         <string>VESUVIO</string>
+         <string>Input:</string>
         </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Analyser:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox_2">
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="le_input"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pb_browseInput">
         <property name="text">
-         <string>graphite</string>
+         <string>Browse</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="lb_calibration">
         <property name="text">
-         <string>mica</string>
+         <string>Calibration:</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="le_calibration"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pb_browseCalibration">
         <property name="text">
-         <string>fmica</string>
+         <string>Browse</string>
         </property>
-       </item>
-       <item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string/>
+         <string>Sample Log Name:</string>
         </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Reflection:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox_3">
-       <item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>002</string>
+         <string>Grouping Method:</string>
         </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>004</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
