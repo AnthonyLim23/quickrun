@@ -8,6 +8,8 @@ class ScanTab(QWidget):
         super(ScanTab, self).__init__()
         self.energytab = uic.loadUi('./EnergyWindowScan.ui', self)
         self.sqwtab = uic.loadUi('./SQWMomentScan.ui', self)
+        self.diffractiontab = uic.loadUi('./DiffractionScan.ui', self)
+
 
 class MainWindowView(QMainWindow):
     def __init__(self):
@@ -17,6 +19,7 @@ class MainWindowView(QMainWindow):
         self.tabs = ScanTab()
         self.ui.tb_quickrun.addTab(self.tabs.energytab, "Energy Window Scan")
         self.ui.tb_quickrun.addTab(self.tabs.sqwtab, "SQW Moments Scan")
+        self.ui.tb_quickrun.addTab(self.tabs.diffractiontab, "Diffraction Scan")
 
 
 qApp = QApplication(sys.argv)
