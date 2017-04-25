@@ -103,89 +103,76 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
        <widget class="QLabel" name="lb_input">
         <property name="text">
          <string>Input:</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLineEdit" name="le_input"/>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pb_browseInput">
+      <item row="2" column="2">
+       <widget class="QLabel" name="lb_groupingMethod">
         <property name="text">
-         <string>Browse</string>
+         <string>Grouping Method:</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="le_calibration"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="le_input">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>sample</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lb_sampleLogName">
+        <property name="text">
+         <string>Sample Log Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QLabel" name="lb_calibration">
         <property name="text">
          <string>Calibration:</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLineEdit" name="le_calibration"/>
+      <item row="2" column="3">
+       <widget class="QComboBox" name="cb_groupingMethod">
+        <item>
+         <property name="text">
+          <string>Individual</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>All</string>
+         </property>
+        </item>
+       </widget>
       </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
+      <item row="1" column="3">
        <widget class="QPushButton" name="pb_browseCalibration">
         <property name="text">
          <string>Browse</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QLabel" name="label">
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pb_browseInput">
         <property name="text">
-         <string>Sample Log Name:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Grouping Method:</string>
+         <string>Browse</string>
         </property>
        </widget>
       </item>
