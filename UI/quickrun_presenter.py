@@ -11,3 +11,4 @@ class QuickRunPresenter(object):
         print(plot_option)
 
         return None
+

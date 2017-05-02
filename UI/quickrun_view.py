@@ -1,7 +1,7 @@
-from PyQt4 import uic, QtCore, pyqtSignal
+from PyQt4 import uic, QtCore
 from PyQt4.QtGui import QMainWindow, QApplication, QWidget
 import sys
-from quickrun_presenter.py import QuickRunPresenter
+from quickrun_presenter import QuickRunPresenter
 
 
 class ScanTab(QWidget):
@@ -15,7 +15,7 @@ class ScanTab(QWidget):
 
 class MainWindowView(QMainWindow):
 
-    plotClicked = pyqtSignal()
+    plotClicked = QtCore.pyqtSignal()
 
     def __init__(self):
         super(MainWindowView, self).__init__()
@@ -26,6 +26,12 @@ class MainWindowView(QMainWindow):
         self.ui.tb_quickrun.insertTab(1,self.tabs.sqwtab, "SQW Moments Scan")
         self.ui.tb_quickrun.insertTab(2,self.tabs.diffractiontab, "Diffraction Scan")
         self.ui.tb_quickrun.insertTab(3, self.tabs.samplechangertab, "Sample Changer")
+        
+        # connect slots
+        self.ui.pb_plot.clicked.connect(self._onPlot)
+        
+    def _onPlot(self):
+        self.plotClicked.emit()
 
     def getPlotOption(self):
         """
