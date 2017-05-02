@@ -5,6 +5,7 @@ from quickrun_presenter import QuickRunPresenter
 
 
 class ScanTab(QWidget):
+
     def __init__(self):
         super(ScanTab, self).__init__()
         self.energytab = uic.loadUi('./EnergyWindowScan.ui')
@@ -16,22 +17,27 @@ class ScanTab(QWidget):
 class MainWindowView(QMainWindow):
 
     plotClicked = QtCore.pyqtSignal()
+    tabChanged = QtCore.pyqtSignal(int)
 
     def __init__(self):
         super(MainWindowView, self).__init__()
         self.ui = uic.loadUi('./IndirectQuickRun.ui', self)
         self.setWindowTitle("Indirect QuickRun")
         self.tabs = ScanTab()
-        self.ui.tb_quickrun.insertTab(0,self.tabs.energytab, "Energy Window Scan")
-        self.ui.tb_quickrun.insertTab(1,self.tabs.sqwtab, "SQW Moments Scan")
-        self.ui.tb_quickrun.insertTab(2,self.tabs.diffractiontab, "Diffraction Scan")
+        self.ui.tb_quickrun.insertTab(0, self.tabs.energytab, "Energy Window Scan")
+        self.ui.tb_quickrun.insertTab(1, self.tabs.sqwtab, "SQW Moments Scan")
+        self.ui.tb_quickrun.insertTab(2, self.tabs.diffractiontab, "Diffraction Scan")
         self.ui.tb_quickrun.insertTab(3, self.tabs.samplechangertab, "Sample Changer")
-        
+
         # connect slots
         self.ui.pb_plot.clicked.connect(self._onPlot)
-        
+        self.ui.tb_quickrun.currentChanged.connect(self._onTab)
+
     def _onPlot(self):
         self.plotClicked.emit()
+
+    def _onTab(self, index):
+        self.tabChanged.emit(index)
 
     def getPlotOption(self):
         """
@@ -53,5 +59,6 @@ qApp = QApplication(sys.argv)
 view = MainWindowView()
 presenter = QuickRunPresenter(view)
 view.plotClicked.connect(presenter.onPlotClicked)
+view.tabChanged.connect(presenter.onTabChanged)
 view.show()
 qApp.exec_()

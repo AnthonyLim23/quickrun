@@ -12,3 +12,6 @@ class QuickRunPresenter(object):
 
         return None
 
+    def onTabChanged(self, index):
+        print(index)
+        return None
