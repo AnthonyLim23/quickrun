@@ -1,6 +1,4 @@
 
-
-
 class QuickRunPresenter(object):
 
     def __init__(self, view, PlotOptionsModel):

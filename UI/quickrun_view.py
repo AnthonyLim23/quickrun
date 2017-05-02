@@ -6,7 +6,6 @@ from quickrun_model import PlotOptionsModel
 
 
 class ScanTab(QWidget):
-
     def __init__(self):
         super(ScanTab, self).__init__()
         self.energytab = uic.loadUi('./EnergyWindowScan.ui')
@@ -16,7 +15,6 @@ class ScanTab(QWidget):
 
 
 class MainWindowView(QMainWindow):
-
     plotClicked = QtCore.pyqtSignal()
     tabChanged = QtCore.pyqtSignal(int)
 
@@ -29,6 +27,9 @@ class MainWindowView(QMainWindow):
         self.ui.tb_quickrun.insertTab(1, self.tabs.sqwtab, "SQW Moments Scan")
         self.ui.tb_quickrun.insertTab(2, self.tabs.diffractiontab, "Diffraction Scan")
         self.ui.tb_quickrun.insertTab(3, self.tabs.samplechangertab, "Sample Changer")
+
+        # set default plot options
+        self.ui.cb_plotOptions.addItems(['Spectra', 'Contour', 'Elwin', 'MSDFit'])
 
         # connect slots
         self.ui.pb_plot.clicked.connect(self._onPlot)
@@ -51,11 +52,13 @@ class MainWindowView(QMainWindow):
         sets the plot option combo box to a list of options
         :param items: list of plot options
         """
-        
+
         self.ui.cb_plotOptions.clear()
         self.ui.cb_plotOptions.addItems(items)
-        if not items: self.ui.cb_plotOptions.setDisabled(True)
-        else: self.ui.cb_plotOptions.setDisabled(False)
+        if not items:
+            self.ui.cb_plotOptions.setDisabled(True)
+        else:
+            self.ui.cb_plotOptions.setDisabled(False)
         return None
 
 

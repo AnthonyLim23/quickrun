@@ -21,6 +21,3 @@ class PlotOptionsModel(object):
         self._plot_options = plot_options
         
         return self._plot_options
-            
-    
-        
