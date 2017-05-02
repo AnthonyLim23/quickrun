@@ -1,8 +1,11 @@
 
+
+
 class QuickRunPresenter(object):
 
-    def __init__(self, view):
+    def __init__(self, view, PlotOptionsModel):
         self._view = view
+        self._plot_option_model = PlotOptionsModel
 
     def onPlotClicked(self):
         view = self._view
@@ -13,5 +16,10 @@ class QuickRunPresenter(object):
         return None
 
     def onTabChanged(self, index):
-        print(index)
+        view = self._view
+        model = self._plot_option_model
+        
+        plot_options = model.getListPlotOptions(index)
+        view.addPlotOptions(plot_options)
+        
         return None

@@ -2,6 +2,7 @@ from PyQt4 import uic, QtCore
 from PyQt4.QtGui import QMainWindow, QApplication, QWidget
 import sys
 from quickrun_presenter import QuickRunPresenter
+from quickrun_model import PlotOptionsModel
 
 
 class ScanTab(QWidget):
@@ -50,14 +51,18 @@ class MainWindowView(QMainWindow):
         sets the plot option combo box to a list of options
         :param items: list of plot options
         """
+        
         self.ui.cb_plotOptions.clear()
         self.ui.cb_plotOptions.addItems(items)
+        if not items: self.ui.cb_plotOptions.setDisabled(True)
+        else: self.ui.cb_plotOptions.setDisabled(False)
         return None
 
 
 qApp = QApplication(sys.argv)
 view = MainWindowView()
-presenter = QuickRunPresenter(view)
+plotModel = PlotOptionsModel()
+presenter = QuickRunPresenter(view, plotModel)
 view.plotClicked.connect(presenter.onPlotClicked)
 view.tabChanged.connect(presenter.onTabChanged)
 view.show()
