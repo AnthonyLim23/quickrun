@@ -1,6 +1,7 @@
-from PyQt4 import uic, QtCore
+from PyQt4 import uic, QtCore, pyqtSignal
 from PyQt4.QtGui import QMainWindow, QApplication, QWidget
 import sys
+from quickrun_presenter.py import QuickRunPresenter
 
 
 class ScanTab(QWidget):
@@ -13,6 +14,9 @@ class ScanTab(QWidget):
 
 
 class MainWindowView(QMainWindow):
+
+    plotClicked = pyqtSignal()
+
     def __init__(self):
         super(MainWindowView, self).__init__()
         self.ui = uic.loadUi('./IndirectQuickRun.ui', self)
@@ -23,7 +27,25 @@ class MainWindowView(QMainWindow):
         self.ui.tb_quickrun.insertTab(2,self.tabs.diffractiontab, "Diffraction Scan")
         self.ui.tb_quickrun.insertTab(3, self.tabs.samplechangertab, "Sample Changer")
 
+    def getPlotOption(self):
+        """
+        returns the currently selected plot option
+        """
+        return self.ui.cb_plotOptions.currentText()
+
+    def addPlotOptions(self, items):
+        """
+        sets the plot option combo box to a list of options
+        :param items: list of plot options
+        """
+        self.ui.cb_plotOptions.clear()
+        self.ui.cb_plotOptions.addItems(items)
+        return None
+
+
 qApp = QApplication(sys.argv)
-aw = MainWindowView()
-aw.show()
+view = MainWindowView()
+presenter = QuickRunPresenter(view)
+view.plotClicked.connect(presenter.onPlotClicked)
+view.show()
 qApp.exec_()
